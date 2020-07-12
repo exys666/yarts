@@ -1,3 +1,15 @@
 = yarts
 
 yest another real time statistics
+
+== Building
+[source, sh]
+----
+mvn clean install
+----
+
+== Running
+[source, sh]
+----
+java --enable-preview -jar target/yarts.jar
+----

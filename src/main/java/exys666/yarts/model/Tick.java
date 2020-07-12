@@ -1,13 +1,14 @@
 package exys666.yarts.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.Instant;
 
-public record Tick (
-        @NotEmpty String instrument,
-        @NotNull Double price,
-        @NotNull Instant timestamp
+public record Tick(
+        @JsonProperty("instrument") @NotEmpty String instrument,
+        @JsonProperty("price") @NotNull Double price,
+        @JsonProperty("timestamp") @NotNull Long timestamp
 ) {
 
 }

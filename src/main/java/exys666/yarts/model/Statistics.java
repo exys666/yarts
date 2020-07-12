@@ -1,9 +1,11 @@
 package exys666.yarts.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public record Statistics(
-        double avg,
-        double max,
-        double min,
-        long count
+        @JsonProperty("avg")double avg,
+        @JsonProperty("max")double max,
+        @JsonProperty("min")double min,
+        @JsonProperty("count")long count
 ) {
 }

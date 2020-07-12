@@ -1,6 +1,7 @@
 package exys666.yarts.web;
 
-import org.springframework.http.ResponseEntity;
+import exys666.yarts.model.Statistics;
+import exys666.yarts.service.StatisticsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,13 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StatisticsController {
 
+    private final StatisticsService statisticsService;
+
+    public StatisticsController(StatisticsService statisticsService) {
+        this.statisticsService = statisticsService;
+    }
+
     @GetMapping("/statistics")
-    public ResponseEntity<?> getStatistics() {
-        return ResponseEntity.ok(null);
+    public Statistics getStatistics() {
+        return statisticsService.getGlobalStats();
     }
 
     @GetMapping("/statistics/{instrument}")
-    public ResponseEntity<?> getStatistics(@PathVariable String instrument) {
-        return ResponseEntity.ok(null);
+    public Statistics getStatistics(@PathVariable String instrument) {
+        return statisticsService.getInstrumentStats(instrument);
     }
 }
