@@ -1,6 +1,6 @@
 = yarts
 
-yest another real time statistics
+yet another real time statistics
 
 == Building
 [source, sh]
