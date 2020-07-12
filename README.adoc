@@ -13,3 +13,16 @@ mvn clean install
 ----
 java --enable-preview -jar target/yarts.jar
 ----
+
+== Assumptions
+App is collecting stats in 1 second buckets, cleaning each bucket when it is older than 1 min.
+Such implementation does not give stats from exactly 60 seconds but rather from last full 60 seconds
+Also statistics for each instrument are collected separately,
+so there is minimal chance that on the edge of last full second tick will be collected globally but not in local instruments stats
+
+Original implementation was using WebFlux, but unfortunately required JavaMelody does not support it and crash,
+so finally app is running on classic WebMvc.
+
+== Possible improvements
+In real live app I would definitely improve tests, a lot more tests with mocks + probably some performance tests
+Also real live app will require some kind of scheduler to clean up TimeFrame for long not seen instruments to free up some memory.
